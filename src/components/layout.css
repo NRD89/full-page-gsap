@@ -602,21 +602,25 @@ pre tt:after {
   top: 0;
 }
 
-html, body {
-  -webkit-overflow-scrolling: touch;
-  overscroll-behavior: contain;
-  margin: 0;
+html,
+body {
+  height: 100%;
 }
 body {
-  overflow: auto;
   position: fixed;
-  height: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  background: 0 0;
+  -webkit-overflow-scrolling: touch;
+  overflow-x: auto;
+  overflow-y: scroll;
   width: 100%;
 }
 
 html {
-  position: fixed;
-  width: 100%;
-  height: 100%;
+  /* width: 100%;
+  height: 100%; */
   overflow: hidden;
 }
