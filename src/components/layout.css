@@ -603,13 +603,15 @@ pre tt:after {
 }
 
 html, body {
-  -webkit-overflow-scrolling: auto;
+  -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;
+  margin: 0;
 }
 body {
   overflow: auto;
-  position: relative;
+  position: fixed;
   height: 100%;
+  width: 100%;
 }
 
 html {

@@ -26,13 +26,13 @@ const GsapPage = () => {
 
     function goToSection(i, anim) {
       // if (!isBrowser) return false
-      gsap.set("body", { overflow: "hidden" })
+      // gsap.set("body", { overflow: "hidden" })
 
       gsap.to("body", {
         scrollTo: { y: i * size, autoKill: false },
         duration: 1.4,
         overwrite: true,
-        onComplete: () => gsap.set("body", { overflow: "auto" }),
+        // onComplete: () => gsap.set("body", { overflow: "auto" }),
       })
 
       if (anim) {
