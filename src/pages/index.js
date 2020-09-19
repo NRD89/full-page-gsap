@@ -2,6 +2,7 @@ import React, { useEffect } from "react"
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import ScrollToPlugin from "gsap/ScrollToPlugin"
+import Div100vh from "react-div-100vh"
 
 import "../components/layout.css"
 import useWindowSize from "../hooks/useWindowSize"
@@ -15,6 +16,7 @@ const isBrowser = typeof window !== `undefined`
 
 const GsapPage = () => {
   const size = useWindowSize()
+  // let pageRef = useRef()
 
   useEffect(() => {
     if (!isBrowser) return false
@@ -23,6 +25,7 @@ const GsapPage = () => {
     gsap.core.globals("ScrollToPlugin", ScrollToPlugin)
 
     function goToSection(i, anim) {
+      // if (!isBrowser) return false
       gsap.set("body", { overflow: "hidden" })
 
       gsap.to("body", {
@@ -54,18 +57,42 @@ const GsapPage = () => {
   // console.log(size.height)
   return (
     <div>
-      <section className="panel" style={{ backgroundColor: `red` }}>
+      <Div100vh
+        className="panel"
+        // ref={element => {
+        //   pageRef = element
+        // }}
+        style={{ backgroundColor: `red` }}
+      >
         ONE
-      </section>
-      <section className="panel" style={{ backgroundColor: `blue` }}>
+      </Div100vh>
+      <Div100vh
+        className="panel"
+        // ref={element => {
+        //   pageRef = element
+        // }}
+        style={{ backgroundColor: `blue` }}
+      >
         TWO
-      </section>
-      <section className="panel" style={{ backgroundColor: `green` }}>
+      </Div100vh>
+      <Div100vh
+        className="panel"
+        // ref={element => {
+        //   pageRef = element
+        // }}
+        style={{ backgroundColor: `green` }}
+      >
         THREE
-      </section>
-      <section className="panel" style={{ backgroundColor: `purple` }}>
+      </Div100vh>
+      <Div100vh
+        className="panel"
+        // ref={element => {
+        //   pageRef = element
+        // }}
+        style={{ backgroundColor: `purple` }}
+      >
         FOUR
-      </section>
+      </Div100vh>
     </div>
   )
 }
