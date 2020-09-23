@@ -1,7 +1,7 @@
 html {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
-  font: 112.5%/1.45em georgia, serif, sans-serif;
+  font: 112.5%/1.45em "Cantata One", serif, sans-serif;
   box-sizing: border-box;
   overflow-y: scroll;
 }
@@ -10,7 +10,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: hsla(0, 0%, 0%, 0.8);
-  font-family: georgia, serif;
+  font-family: "Cantata One", serif;
   font-weight: normal;
   word-wrap: break-word;
   font-kerning: normal;
@@ -592,12 +592,15 @@ pre tt:after {
 }
 @media only screen and (max-width: 480px) {
   html {
-    font-size: 100%;
+    font-size: 95%;
+  }
+  #logo {
+    left: 0 !important;
+    transform: translate(22%, 1%);
   }
 }
 
-.panel {
-  /* height: 100vh; */
+/* .panel {
   position: sticky;
   top: 0;
 }
@@ -620,7 +623,75 @@ body {
 }
 
 html {
-  /* width: 100%;
-  height: 100%; */
   overflow: hidden;
+} */
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: "Montserrat";
+  font-weight: 300;
 }
+
+#myMenu {
+  list-style: none;
+  margin: 0;
+}
+
+.menu-link a {
+  color: rgba(240, 240, 240, 0.5);
+  text-decoration: none;
+}
+
+.active a {
+  color: rgba(240, 240, 240, 0.9);
+  font-weight: bold;
+}
+
+#myVideo {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-size: 100% 100%;
+  background-color: black; /* in case the video doesn't fit the whole page*/
+  background-image: /* our video */ ;
+  background-position: center center;
+  background-size: contain;
+  object-fit: cover; /*cover video background */
+  z-index: 3;
+}
+
+/* Layer with position absolute in order to have it over the video
+	* --------------------------------------- */
+	#section1 .layer{
+		position: absolute;
+		z-index: 4;
+		width: 100%;
+		left: 0;
+		top: 43%;
+
+		/*
+		* Preventing flicker on some browsers
+		* See http://stackoverflow.com/a/36671466/1081396  or issue #183
+		*/
+		-webkit-transform: translate3d(0,0,0);
+		-ms-transform: translate3d(0,0,0);
+		transform: translate3d(0,0,0);
+	}
+
+	/*solves problem with overflowing video in Mac with Chrome */
+	#section0{
+		overflow: hidden;
+  }
+  
+  /* Hiding video controls
+	* See: https://css-tricks.com/custom-controls-in-html5-video-full-screen/
+	* --------------------------------------- */
+	video::-webkit-media-controls {
+	  display:none !important;
+	}

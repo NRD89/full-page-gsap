@@ -1,0 +1,17 @@
+* ::before ::after {
+  box-sizing: border-box;
+}
+
+body {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: darkcyan;
+}
+
+.smooth {
+  position:
+}
