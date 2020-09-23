@@ -595,8 +595,7 @@ pre tt:after {
     font-size: 95%;
   }
   #logo {
-    left: 0 !important;
-    transform: translate(22%, 1%);
+    justify-content: center !important;
   }
 }
 
@@ -638,15 +637,16 @@ h5 {
 #myMenu {
   list-style: none;
   margin: 0;
+  font-family: "Cardo";
 }
 
 .menu-link a {
-  color: rgba(240, 240, 240, 0.5);
+  color: rgba(255, 255, 255, 0.5);
   text-decoration: none;
 }
 
 .active a {
-  color: rgba(240, 240, 240, 0.9);
+  color: rgb(255, 255, 255);
   font-weight: bold;
 }
 

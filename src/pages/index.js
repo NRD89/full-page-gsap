@@ -51,21 +51,25 @@ const SecondPage = fullpageProps => {
         }
         return (
           <div id="fullpage-wrapper">
-            <a
-              href="#"
+            <div
               id="logo"
               style={{
                 position: `fixed`,
                 top: `20px`,
-                left: `20px`,
+                // left: `20px`,
+                width: `100%`,
                 zIndex: `99`,
+                display: `flex`,
+                justifyContent: `flex-start`,
               }}
             >
-              <img
-                src="https://res.cloudinary.com/nathandalton-dev/image/upload/f_auto,q_auto:best/v1600824699/logo_cu0dx8.png"
-                alt="Global Wealth Partners Logo"
-              />
-            </a>
+              <a href="#" >
+                <img
+                  src="https://res.cloudinary.com/nathandalton-dev/image/upload/dpr_auto,f_auto,q_auto:best/v1600824699/logo_cu0dx8.png"
+                  alt="Global Wealth Partners Logo"
+                />
+              </a>
+            </div>
             <ul
               id="myMenu"
               style={{
@@ -179,10 +183,9 @@ const SecondPage = fullpageProps => {
               <div
                 className="fp-bg"
                 style={{
-                  backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 1)),url(https://res.cloudinary.com/nathandalton-dev/image/upload/c_scale,f_auto,q_auto:best,w_1800/v1600846722/pexels-andrea-piacquadio-3783585_xkgbwy.jpg)`,
+                  backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 1)),url(https://res.cloudinary.com/nathandalton-dev/image/upload/c_scale,f_auto,q_auto:best,w_2407/v1600851248/pexels-bongkarn-thanyakij-3740400_ky9fkq.jpg)`,
                   backgroundSize: `cover`,
-                  backgroundPosition: `50% 100%`,
-                  backdropFilter: `blur(5px)`,
+                  backgroundPosition: `40% center`,
                 }}
               ></div>
               <div
