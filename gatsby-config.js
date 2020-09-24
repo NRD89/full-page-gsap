@@ -33,11 +33,15 @@ module.exports = {
       options: {
         fonts: [
           {
-            family: `Montserrat`,
+            family: `Proza Libre`,
           },
           {
-            family: `Cardo`,
-            variants: [`400`, `700`]
+            family: `Cormorant Garamond`,
+            variants: ['300', `700`]
+          },
+          {
+            family: `Open Sans`,
+            variants: ['300', `700`]
           },
         ],
       },

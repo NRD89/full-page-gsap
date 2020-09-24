@@ -630,24 +630,28 @@ h2,
 h3,
 h4,
 h5 {
-  font-family: "Montserrat";
+  font-family: "Cormorant Garamond";
   font-weight: 300;
 }
 
 #myMenu {
   list-style: none;
   margin: 0;
-  font-family: "Cardo";
+  font-family: "Cormorant Garamond";
 }
 
 .menu-link a {
   color: rgba(255, 255, 255, 0.5);
   text-decoration: none;
+  transition: 0.3s ease-in-out;
+  border-bottom: 2px transparent solid;
 }
 
 .active a {
   color: rgb(255, 255, 255);
   font-weight: bold;
+  border-bottom: 2px #fff solid;
+  transition: 1s ease-in-out;
 }
 
 #myVideo {
@@ -668,30 +672,68 @@ h5 {
 
 /* Layer with position absolute in order to have it over the video
 	* --------------------------------------- */
-	#section1 .layer{
-		position: absolute;
-		z-index: 4;
-		width: 100%;
-		left: 0;
-		top: 43%;
+#section1 .layer {
+  position: relative;
+  z-index: 4;
+  width: 100%;
+  /* left: 0;
+  top: 35%; */
 
-		/*
+  /*
 		* Preventing flicker on some browsers
 		* See http://stackoverflow.com/a/36671466/1081396  or issue #183
 		*/
-		-webkit-transform: translate3d(0,0,0);
-		-ms-transform: translate3d(0,0,0);
-		transform: translate3d(0,0,0);
-	}
+  -webkit-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
 
-	/*solves problem with overflowing video in Mac with Chrome */
-	#section0{
-		overflow: hidden;
-  }
-  
-  /* Hiding video controls
+/*solves problem with overflowing video in Mac with Chrome */
+#section0 {
+  overflow: hidden;
+}
+
+/* Hiding video controls
 	* See: https://css-tricks.com/custom-controls-in-html5-video-full-screen/
 	* --------------------------------------- */
-	video::-webkit-media-controls {
-	  display:none !important;
-	}
+video::-webkit-media-controls {
+  display: none !important;
+}
+
+h2.hero-heading {
+  padding-bottom: 0.5em;
+  text-align: center;
+  font-size: 3em;
+  line-height: 0.9em;
+  letter-spacing: 15px;
+  color: #fff;
+  /* font-weight: 700; */
+  text-transform: uppercase;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+h2.hero-heading span {
+  font-size: 0.5em;
+}
+
+hr {
+  content: "";
+  background: #0b5563;
+  /* bottom: 0%;
+  left: 25%; */
+  width: 100%;
+  height: 2px;
+}
+
+p.subheading {
+  text-align: center;
+  width: 100%;
+  padding: 1.5em 0;
+  font-family: "Proza Libre", sans-serif;
+  font-weight: 400;
+  color: #cdb083;
+  text-transform: uppercase;
+  letter-spacing: 10px;
+  font-size: 1em;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}

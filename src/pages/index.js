@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react"
 // import { Link } from "gatsby"
 import ReactFullpage from "@fullpage/react-fullpage"
 import "../components/layout.css"
+import { gsap } from "gsap"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -21,8 +22,58 @@ const SecondPage = fullpageProps => {
   // }, [state])
   const onLeave = (origin, destination, direction) => {
     const section = destination.item
-    const title = section.querySelector("h3")
-    console.log(title)
+    console.log(destination.item)
+    const mainHeading = section.querySelector("h2")
+    const title = section.querySelectorAll("p")
+    const tl2 = gsap.timeline({ delay: 2 })
+    const tl1 = gsap.timeline({ delay: 1 })
+    tl2.fromTo(
+      title,
+      { y: 50, opacity: 0 },
+      { duration: 1.5, y: 0, opacity: 1 }
+    )
+    tl1.fromTo(mainHeading, { opacity: 0 }, { duration: 0.5, opacity: 1 })
+
+    if (destination.index === 0) {
+      const leftSection = section.querySelector("#left-section")
+      console.log(leftSection)
+      tl2.fromTo(
+        leftSection,
+        { width: 0, ease: "slow(0.3, 0.7, false)" },
+        { duration: 1.5, width: "35%", ease: "slow(0.3, 0.7, false)" }
+      )
+    }
+  }
+  const afterLoad = (origin, destination, direction) => {
+    const section = destination.item
+    console.log(destination.item)
+    const mainHeading = section.querySelector("h2")
+    const title = section.querySelectorAll("p")
+    const hr = section.querySelectorAll("hr")
+    const tl2 = gsap.timeline({ delay: 3 })
+    const tl1 = gsap.timeline({ delay: 2 })
+    const tl = gsap.timeline({ delay: 0.5 })
+    tl2.fromTo(
+      title,
+      { y: 50, opacity: 0 },
+      { duration: 1.5, y: 0, opacity: 1 }
+    )
+    tl1.fromTo(mainHeading, { opacity: 0 }, { duration: 1.5, opacity: 1 })
+    tl1.fromTo(
+      hr,
+      { width: 0, ease: "slow(0.3, 0.7, false)" },
+      { duration: 1.5, width: "100%", ease: "slow(0.3, 0.7, false)" }
+    )
+
+    if (destination.index === 0) {
+      const leftSection = section.querySelector("#left-section")
+      console.log(leftSection)
+      tl.fromTo(
+        leftSection,
+        { width: 0, ease: "slow(0.3, 0.7, false)" },
+        { duration: 1.5, width: "50%", ease: "slow(0.3, 0.7, false)" }
+      )
+    }
   }
 
   const [something, setSomething] = useState()
@@ -34,7 +85,8 @@ const SecondPage = fullpageProps => {
       parallax={true}
       parallaxOptions={{ percentage: 100 }}
       parallaxKey={"9CA6BD29-008B42B4-8AEA4CDF-FBC960E5"}
-      onLeave={onLeave}
+      // onLeave={onLeave}
+      afterLoad={afterLoad}
       scrollingSpeed={2000}
       easing={"easeInOutBounce"}
       anchors={["firstPage", "secondPage", "thirdPage"]}
@@ -61,9 +113,10 @@ const SecondPage = fullpageProps => {
                 zIndex: `99`,
                 display: `flex`,
                 justifyContent: `flex-start`,
+                marginLeft: `1rem`,
               }}
             >
-              <a href="#" >
+              <a href="#">
                 <img
                   src="https://res.cloudinary.com/nathandalton-dev/image/upload/dpr_auto,f_auto,q_auto:best/v1600824699/logo_cu0dx8.png"
                   alt="Global Wealth Partners Logo"
@@ -91,39 +144,41 @@ const SecondPage = fullpageProps => {
                 <a href="#thirdPage">Partners</a>
               </li>
             </ul>
+            // First Slide
             <div
               className="section active"
               id="section1"
               data-anchor="firstPage"
             >
-              {/* <div
+              <aside
+                id="left-section"
                 style={{
                   position: `absolute`,
-                  width: `100%`,
+                  width: `50%`,
                   height: `100%`,
                   top: `0`,
                   left: `0`,
-                  backgroundColor: `rgba(255,255,255,.25)`,
+                  backgroundColor: `rgba(10, 10, 10, .5)`,
                   // backdropFilter: `blur(0.5px)`,
                   zIndex: `11`,
                 }}
-              ></div> */}
-              {/* <div
+              ></aside>
+              <div
                 className="fp-bg"
                 style={{
-                  backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 1)),url(https://res.cloudinary.com/nathandalton-dev/image/upload/f_auto,q_auto:good,w_1800/v1600824785/pexels-oliver-sj%C3%B6str%C3%B6m-1223649_n57smo.jpg)`,
+                  backgroundImage: `linear-gradient(to bottom, rgba(27,27,27,.65), rgba(27,27,27,.65))`,
                   backgroundSize: `cover`,
                   backgroundPosition: `center`,
                   backdropFilter: `blur(5px)`,
                 }}
-              ></div> */}
+              ></div>
               <video id="myVideo" loop muted data-autoplay>
                 <source
-                  src="https://res.cloudinary.com/nathandalton-dev/video/upload/f_auto,q_auto:best/v1600845238/close-up-on-earth-animation_wywwlu-b__D_vgh1qs.mp4"
+                  src="https://res.cloudinary.com/nathandalton-dev/video/upload/f_auto,q_auto:best/v1600978156/Pexels_Videos_1851190_pj4i9y.mp4"
                   type="video/mp4"
                 />
                 <source
-                  src="https://res.cloudinary.com/nathandalton-dev/video/upload/f_auto,q_auto:best/v1600845238/close-up-on-earth-animation_wywwlu-b__D_vgh1qs.webm"
+                  src="https://res.cloudinary.com/nathandalton-dev/video/upload/f_auto,q_auto:best/v1600978156/Pexels_Videos_1851190_pj4i9y.webm"
                   type="video/webm"
                 />
               </video>
@@ -135,16 +190,22 @@ const SecondPage = fullpageProps => {
                   alignItems: `center`,
                   flexDirection: `column`,
                   margin: `0 auto`,
+                  zIndex: `12`,
                 }}
               >
-                <div style={{ textAlign: `center`, color: `rgb(230,230,230)` }}>
-                  <h3>Over 100 years of combined experience</h3>
-                  <h2>
-                    Global Wealth Partners <br />{" "}
-                    <span style={{ textTransform: `uppercase` }}>
-                      Wealth Planning Firm
-                    </span>
+                {/* style={{ textAlign: `center`, color: `rgb(230,230,230)`, backgroundColor: `rgba(255,255,255, .8)`, padding: `1rem`, boxShadow: `7px 29px 49px 0px rgba(0, 0, 0, 0.5)`}} */}
+                <div>
+                  <hr />
+                  <p className="subheading">
+                    Over 100 years of combined experience
+                  </p>
+                  <h2 className="hero-heading">
+                    Global <br /> <span>Wealth</span>
+                    <br />
+                    Partners
                   </h2>
+                  <p className="subheading">Wealth Planning Firm</p>
+                  <hr />
                 </div>
               </div>
             </div>
@@ -152,7 +213,7 @@ const SecondPage = fullpageProps => {
               <div
                 className="fp-bg"
                 style={{
-                  backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 1)),url(https://res.cloudinary.com/nathandalton-dev/image/upload/f_auto,q_auto:good,w_1800/v1600824785/pexels-oliver-sj%C3%B6str%C3%B6m-1223649_n57smo.jpg)`,
+                  backgroundImage: `linear-gradient(to bottom, rgba(27,27,27,.5), rgba(27,27,27,.5)),url(https://res.cloudinary.com/nathandalton-dev/image/upload/f_auto,q_auto:good,w_1800/v1600824785/pexels-oliver-sj%C3%B6str%C3%B6m-1223649_n57smo.jpg)`,
                   backgroundSize: `cover`,
                   backgroundPosition: `center`,
                   backdropFilter: `blur(5px)`,
