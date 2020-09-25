@@ -595,10 +595,10 @@ pre tt:after {
     font-size: 95%;
   }
 
-  #logo {
+  /* #logo {
     justify-content: center !important;
     margin-left: 0 !important;
-  }
+  } */
 
   #logo a {
     width: 175px;
@@ -640,6 +640,8 @@ h5 {
   font-weight: 300;
 }
 
+/* Menu */
+
 #myMenu {
   list-style: none;
   margin: 0;
@@ -651,6 +653,141 @@ h5 {
   text-decoration: none;
   transition: 0.3s ease-in-out;
   border-bottom: 2px transparent solid;
+}
+
+.menu-trigger {
+  display: inline-flex;
+  flex-direction: column;
+  height: 48px;
+  width: 48px;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: transparent;
+  border: 0;
+  outline: 0;
+  position: relative;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 99;
+  margin-right: 2rem;
+}
+
+.menu-trigger span {
+  display: inline-flex;
+  width: 30px;
+  height: 2px;
+  border-radius: 16px;
+  background-color: #fff;
+  transition: all ease 0.5s;
+}
+
+.menu-close span {
+  position: absolute;
+  background-color: #efefef;
+}
+
+.menu-close span:nth-child(1) {
+  transform: rotate(45deg);
+}
+
+.menu-close span:nth-child(3) {
+  transform: rotate(-45deg);
+}
+
+.menu-close span:nth-child(2) {
+  opacity: 0;
+  height: 0;
+  width: 0;
+}
+
+/* Side Bar Nav Styles */
+
+.sidebarNavigationOverlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  display: flex;
+  background-color: transparent;
+  z-index: 8;
+  visibility: hidden;
+}
+
+.menu-wrapper {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  display: flex;
+  z-index: 9;
+  width: 300px;
+  right: 0;
+  overflow: hidden;
+}
+
+.menu-layer {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  background-color: #0b5563;
+  z-index: -1;
+  visibility: hidden;
+}
+
+.sidebarNavigation {
+  position: relative;
+  width: 300px;
+  height: 100%;
+  background-color: #2e2e2e;
+  padding-top: 50px;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.75);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  visibility: hidden;
+}
+
+.sidebarNavigation::-webkit-scrollbar {
+  width: 0px;
+}
+
+.sidebarNavigation .sidebar-top {
+  overflow: hidden;
+  display: flex;
+  /* height: calc(100% - 260px); */
+}
+
+.sidebarNavigation .sidebar-top .links-wrapper {
+  overflow: hidden;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex-shrink: 0;
+}
+
+.sidebarNavigation .sidebar-top .links-wrapper .menu-link {
+  padding: 16px;
+      display: flex;
+      color: #f7f7f7;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 500;
+      background-color: #2e2e2e;
+      width: 100%;
+      text-decoration: none;
+}
+
+.sidebarNavigation .sidebar-top .links-wrapper .menu-link:hover {
+  background-color: darken(#2e2e2e, 10%);
 }
 
 .active a {
@@ -676,9 +813,13 @@ h5 {
   z-index: 3;
 }
 
+#section3 #myVideo {
+  z-index: 2;
+}
+
 /* Layer with position absolute in order to have it over the video
 	* --------------------------------------- */
- .layer {
+.layer {
   position: relative;
   /* z-index: 4; */
   width: 100%;
@@ -751,7 +892,7 @@ p.subheading {
 .text-container-2 {
   visibility: hidden;
   background-color: rgba(10, 10, 10, 0.3);
-  padding: 4rem .9rem;
+  padding: 4rem 0.9rem;
 }
 
 #section2 hr {

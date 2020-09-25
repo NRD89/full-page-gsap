@@ -3,7 +3,7 @@ import React, { useRef, useEffect, useState } from "react"
 import ReactFullpage from "@fullpage/react-fullpage"
 import "../components/layout.css"
 import { gsap } from "gsap"
-import ReactAudioPlayer from "react-audio-player"
+import SideBarNav from "../components/SideBarNav"
 
 import GwpAudio from "../assets/Global_Wealth_Option_1_JimmyLuthye.wav"
 import Layout from "../components/layout"
@@ -20,6 +20,8 @@ const SecondPage = fullpageProps => {
   }, [])
 
   const audioPlayerRef = useRef()
+
+  const [menuState, setMenuState] = useState(false)
 
   const contentReveal = (section, destination) => {
     const mainHeading = section.querySelector("h2")
@@ -184,7 +186,7 @@ const SecondPage = fullpageProps => {
       easing={"easeInOutBounce"}
       anchors={["firstPage", "secondPage", "thirdPage"]}
       menu={"#myMenu"}
-      fixedElements={["#logo"]}
+      fixedElements={["#logo", "#side-bar-nav"]}
       render={({ state, fullpageApi }) => {
         console.log("render prop change", state) // eslint-disable-line no-console
         console.log(fullpageProps)
@@ -196,7 +198,7 @@ const SecondPage = fullpageProps => {
         }
         return (
           <div id="fullpage-wrapper">
-            <div
+            <header
               id="logo"
               style={{
                 position: `fixed`,
@@ -205,7 +207,7 @@ const SecondPage = fullpageProps => {
                 width: `100%`,
                 zIndex: `99`,
                 display: `flex`,
-                justifyContent: `flex-start`,
+                justifyContent: `space-between`,
                 marginLeft: `1rem`,
               }}
             >
@@ -215,14 +217,24 @@ const SecondPage = fullpageProps => {
                   alt="Global Wealth Partners Logo"
                 />
               </a>
-            </div>
-            <iframe
+              <div>
+                <button
+                  className={`menu-trigger ${menuState ? "menu-close" : ""}`}
+                  onClick={() => setMenuState(!menuState)}
+                >
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </button>
+              </div>
+            <SideBarNav  menuState={menuState} setMenuState={setMenuState} />
+            </header>
+            {/* <iframe
               src="https://raw.githubusercontent.com/anars/blank-audio/master/250-milliseconds-of-silence.mp3"
               allow="autoplay"
-              style={{display: `none`}}
+              style={{ display: `none` }}
               id="iframeAudio"
-            ></iframe>
-            
+            ></iframe> */}
             <ul
               id="myMenu"
               style={{
@@ -284,13 +296,13 @@ const SecondPage = fullpageProps => {
                 />
               </video>
               <audio
-              ref={audioPlayerRef}
-              src="https://res.cloudinary.com/nathandalton-dev/video/upload/v1601003858/Global_Wealth_Option_1_JimmyLuthye_pd5f9e.mp3"
-              type="audio/mpeg"
-              autoPlay
-              data-autoplay
-              data-keepplaying
-            />
+                ref={audioPlayerRef}
+                src="https://res.cloudinary.com/nathandalton-dev/video/upload/v1601003858/Global_Wealth_Option_1_JimmyLuthye_pd5f9e.mp3"
+                type="audio/mpeg"
+                autoPlay
+                data-autoplay
+                data-keepplaying
+              />
               <div
                 className="layer"
                 style={{
@@ -379,7 +391,7 @@ const SecondPage = fullpageProps => {
                 className="fp-bg"
                 style={{
                   position: `absolute`,
-                  backgroundImage: `linear-gradient(to bottom, rgba(27,27,27,.5), rgba(27,27,27,.5))`,
+                  backgroundImage: `linear-gradient(to bottom, rgba(27,27,27,.7), rgba(27,27,27,.7))`,
                   backgroundSize: `cover`,
                   backgroundPosition: `center`,
                   zIndex: `11`,
