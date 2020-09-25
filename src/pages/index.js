@@ -29,30 +29,6 @@ const SecondPage = fullpageProps => {
     const hr = section.querySelectorAll("hr")
     const leftSection = section.querySelector(".anim-section")
 
-    if (destination.anchor === "thirdPage") {
-      const tl2 = gsap.timeline({ delay: 1.5 })
-      const tl = gsap.timeline({ delay: 0.5 })
-
-      tl2.fromTo(
-        title,
-        { y: 50, autoAlpha: 0 },
-        { duration: 1.5, y: 0, autoAlpha: 1 }
-      )
-      tl.fromTo(
-        mainHeading,
-        { autoAlpha: 0 },
-        { duration: 1.5, autoAlpha: 1 }
-      ).fromTo(
-        hr,
-        { width: 0, ease: "slow(0.3, 0.7, false)", autoAlpha: 0 },
-        {
-          duration: 1.5,
-          width: "100%",
-          ease: "slow(0.3, 0.7, false)",
-          autoAlpha: 1,
-        }
-      )
-    } else {
       const tl3 = gsap.timeline({ delay: 2.5 })
       const tl2 = gsap.timeline({ delay: 1.5 })
       const tl = gsap.timeline({ delay: 0.5 })
@@ -93,8 +69,18 @@ const SecondPage = fullpageProps => {
             autoAlpha: 1,
           }
         )
+      } else if (destination.anchor === "thirdPage") {
+        tl.fromTo(
+          leftSection,
+          { height: 0, ease: "slow(0.3, 0.7, false)", autoAlpha: 0 },
+          {
+            duration: 1,
+            height: "100%",
+            ease: "slow(0.3, 0.7, false)",
+            autoAlpha: 1,
+          }
+        )
       }
-    }
 
     // tl.restart().timeScale(1)
     // tl2.restart().timeScale(1)
@@ -111,14 +97,14 @@ const SecondPage = fullpageProps => {
     const tl2 = gsap.timeline({ delay: 0.5 })
     const tl = gsap.timeline({ delay: 0.5 })
 
-    tl3.fromTo(title, { autoAlpha: 1 }, { duration: 1.5, autoAlpha: 0 })
+    tl3.fromTo(title, { autoAlpha: 1 }, { duration: .5, autoAlpha: 0 })
     tl2
-      .fromTo(mainHeading, { autoAlpha: 1 }, { duration: 1.5, autoAlpha: 0 })
+      .fromTo(mainHeading, { autoAlpha: 1 }, { duration: .5, autoAlpha: 0 })
       .fromTo(
         hr,
         { autoAlpha: 1 },
         {
-          duration: 1.5,
+          duration: .5,
           autoAlpha: 0,
         }
       )
@@ -126,13 +112,19 @@ const SecondPage = fullpageProps => {
       tl.fromTo(
         leftSection,
         { width: "50%", ease: "slow(0.3, 0.7, false)" },
-        { duration: 1.5, width: 0, ease: "slow(0.3, 0.7, false)" }
+        { duration: .5, width: 0, ease: "slow(0.3, 0.7, false)" }
       )
     } else if (origin.anchor === "secondPage") {
       tl.fromTo(
         leftSection,
         { width: "100%", padding: "2rem 0", ease: "slow(0.3, 0.7, false)" },
-        { duration: 1.5, width: 0, padding: 0, ease: "slow(0.3, 0.7, false)" }
+        { duration: .5, width: 0, padding: 0, ease: "slow(0.3, 0.7, false)" }
+      )
+    } else if (origin.anchor === "thirdPage") {
+      tl.fromTo(
+        leftSection,
+        { height: "100%", ease: "slow(0.3, 0.7, false)" },
+        { duration: .5, height: 0, ease: "slow(0.3, 0.7, false)" }
       )
     }
 
@@ -227,7 +219,7 @@ const SecondPage = fullpageProps => {
                   <span></span>
                 </button>
               </div>
-            <SideBarNav  menuState={menuState} setMenuState={setMenuState} />
+              <SideBarNav menuState={menuState} setMenuState={setMenuState} />
             </header>
             {/* <iframe
               src="https://raw.githubusercontent.com/anars/blank-audio/master/250-milliseconds-of-silence.mp3"
@@ -285,7 +277,7 @@ const SecondPage = fullpageProps => {
                   zIndex:`11`
                 }}
               ></div> */}
-              <video id="myVideo" loop muted data-autoplay>
+              <video className="fp-bg" id="myVideo" loop muted data-autoplay>
                 <source
                   src="https://res.cloudinary.com/nathandalton-dev/video/upload/f_auto,q_auto:best/v1600978156/Pexels_Videos_1851190_pj4i9y.mp4"
                   type="video/mp4"
@@ -387,17 +379,22 @@ const SecondPage = fullpageProps => {
               </div> */}
             </div>
             <div className="section" id="section3" data-anchor="thirdPage">
-              <div
-                className="fp-bg"
-                style={{
-                  position: `absolute`,
-                  backgroundImage: `linear-gradient(to bottom, rgba(27,27,27,.7), rgba(27,27,27,.7))`,
-                  backgroundSize: `cover`,
-                  backgroundPosition: `center`,
-                  zIndex: `11`,
-                }}
-              ></div>
-              <video id="myVideo" loop muted data-autoplay>
+                <div
+                  className="anim-section"
+                  style={{
+                    position: `absolute`,
+                    backgroundImage: `linear-gradient(to bottom, rgba(27,27,27,.7), rgba(27,27,27,.7))`,
+                    backgroundSize: `cover`,
+                    backgroundPosition: `center`,
+                    zIndex: `11`,
+                    height: `100%`,
+                    width: `100%`,
+                    top: `0`,
+                    left: `0`,
+                    visibility: `hidden`,
+                  }}
+                ></div>
+              <video className="fp-bg" id="myVideo" loop muted data-autoplay>
                 <source
                   src="https://res.cloudinary.com/nathandalton-dev/video/upload/q_auto:best/v1600998882/videoblocks-beverly-hills-street-with-palm-trees_hnqywfhlb_1080__D_s1gvnl.mp4"
                   type="video/mp4"

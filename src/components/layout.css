@@ -802,6 +802,11 @@ h5 {
 
 #section3 #myVideo {
   z-index: 2;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(27, 27, 27, 0.7),
+    rgba(27, 27, 27, 0.7)
+  ) !important;
 }
 
 /* Layer with position absolute in order to have it over the video
