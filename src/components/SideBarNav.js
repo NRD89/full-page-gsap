@@ -12,20 +12,25 @@ const SidebarNav = props => {
   useEffect(() => {
     menuTimeline.current = gsap.timeline({ paused: true })
     menuTimeline.current.fromTo(
-      [sidebarMenuOverlay, menuWrapper, menuLayer, sidebarMenu],
+      [sidebarMenuOverlay, menuWrapper, sidebarMenu],
       {
-        duration: 0,
+        duration: 2,
+        // y: "-100%",
         x: "100%",
         autoAlpha: 0,
+        borderRadius: "100%",
+        ease: "slow(0.9, 0.1, false)",
       },
       {
-        duration: 1,
-        x: "0%",
-        ease: "power3.inOut",
-        stagger: {
-          amount: 0.5,
-        },
+        duration: 1.5,
+        // y: 0,
+        x: 0,
+        ease: "slow(0.9, 0.1, false)",
+        // stagger: {
+        //   amount: 0.4,
+        // },
         autoAlpha: 1,
+        borderRadius: 0,
       }
     )
   }, [])
@@ -47,7 +52,7 @@ const SidebarNav = props => {
         onClick={() => setMenuState(false)}
       ></div>
       <div className="menu-wrapper" ref={el => (menuWrapper = el)}>
-        <div className="menu-layer" ref={el => (menuLayer = el)}></div>
+        {/* <div className="menu-layer" ref={el => (menuLayer = el)}></div> */}
         <nav className="sidebarNavigation" ref={el => (sidebarMenu = el)}>
           <div className="sidebar-top">
             <div className="links-wrapper">
