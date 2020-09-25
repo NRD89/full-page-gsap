@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react"
+import React, { useRef, useEffect, useState } from "react"
 // import { Link } from "gatsby"
 import ReactFullpage from "@fullpage/react-fullpage"
 import "../components/layout.css"
 import { gsap } from "gsap"
+import ReactAudioPlayer from "react-audio-player"
 
+import GwpAudio from "../assets/Global_Wealth_Option_1_JimmyLuthye.wav"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
@@ -12,14 +14,12 @@ const pluginWrapper = () => {
 }
 
 const SecondPage = fullpageProps => {
-  // useEffect(() => {
-  //   ;<ReactFullpage
-  //     render={({ state }) => {
-  //       console.log(state)
-  //       return <div></div>
-  //     }}
-  //   />
-  // }, [state])
+  useEffect(() => {
+    audioPlayerRef.current.play()
+    console.log(audioPlayerRef.current.play())
+  }, [])
+
+  const audioPlayerRef = useRef()
 
   const contentReveal = (section, destination) => {
     const mainHeading = section.querySelector("h2")
@@ -216,6 +216,13 @@ const SecondPage = fullpageProps => {
                 />
               </a>
             </div>
+            <iframe
+              src="https://raw.githubusercontent.com/anars/blank-audio/master/250-milliseconds-of-silence.mp3"
+              allow="autoplay"
+              style={{display: `none`}}
+              id="iframeAudio"
+            ></iframe>
+            
             <ul
               id="myMenu"
               style={{
@@ -256,15 +263,16 @@ const SecondPage = fullpageProps => {
                   zIndex: `11`,
                 }}
               ></aside>
-              <div
+              {/* <div
                 className="fp-bg"
                 style={{
+                  position: `absolute`,
                   backgroundImage: `linear-gradient(to bottom, rgba(27,27,27,.65), rgba(27,27,27,.65))`,
                   backgroundSize: `cover`,
                   backgroundPosition: `center`,
-                  backdropFilter: `blur(5px)`,
+                  zIndex:`11`
                 }}
-              ></div>
+              ></div> */}
               <video id="myVideo" loop muted data-autoplay>
                 <source
                   src="https://res.cloudinary.com/nathandalton-dev/video/upload/f_auto,q_auto:best/v1600978156/Pexels_Videos_1851190_pj4i9y.mp4"
@@ -275,6 +283,14 @@ const SecondPage = fullpageProps => {
                   type="video/webm"
                 />
               </video>
+              <audio
+              ref={audioPlayerRef}
+              src="https://res.cloudinary.com/nathandalton-dev/video/upload/v1601003858/Global_Wealth_Option_1_JimmyLuthye_pd5f9e.mp3"
+              type="audio/mpeg"
+              autoPlay
+              data-autoplay
+              data-keepplaying
+            />
               <div
                 className="layer"
                 style={{
@@ -362,11 +378,23 @@ const SecondPage = fullpageProps => {
               <div
                 className="fp-bg"
                 style={{
-                  backgroundImage: `linear-gradient(to bottom, rgba(27,27,27,.45), rgba(27,27,27,.45)),url(https://res.cloudinary.com/nathandalton-dev/image/upload/c_scale,f_auto,q_auto:best,w_2407/v1600851248/pexels-bongkarn-thanyakij-3740400_ky9fkq.jpg)`,
+                  position: `absolute`,
+                  backgroundImage: `linear-gradient(to bottom, rgba(27,27,27,.5), rgba(27,27,27,.5))`,
                   backgroundSize: `cover`,
-                  backgroundPosition: `40% center`,
+                  backgroundPosition: `center`,
+                  zIndex: `11`,
                 }}
               ></div>
+              <video id="myVideo" loop muted data-autoplay>
+                <source
+                  src="https://res.cloudinary.com/nathandalton-dev/video/upload/q_auto:best/v1600998882/videoblocks-beverly-hills-street-with-palm-trees_hnqywfhlb_1080__D_s1gvnl.mp4"
+                  type="video/mp4"
+                />
+                <source
+                  src="https://res.cloudinary.com/nathandalton-dev/video/upload/q_auto:best/v1600998882/videoblocks-beverly-hills-street-with-palm-trees_hnqywfhlb_1080__D_s1gvnl.webm"
+                  type="video/webm"
+                />
+              </video>
               <div
                 className="layer"
                 style={{

@@ -594,8 +594,14 @@ pre tt:after {
   html {
     font-size: 95%;
   }
+
   #logo {
     justify-content: center !important;
+    margin-left: 0 !important;
+  }
+
+  #logo a {
+    width: 175px;
   }
 }
 
@@ -672,9 +678,9 @@ h5 {
 
 /* Layer with position absolute in order to have it over the video
 	* --------------------------------------- */
-#section1 .layer {
+ .layer {
   position: relative;
-  z-index: 4;
+  /* z-index: 4; */
   width: 100%;
   /* left: 0;
   top: 35%; */
