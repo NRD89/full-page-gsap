@@ -186,7 +186,7 @@ const SecondPage = fullpageProps => {
       easing={"easeInOutBounce"}
       anchors={["firstPage", "secondPage", "thirdPage"]}
       menu={"#myMenu"}
-      fixedElements={["#logo", "#side-bar-nav"]}
+      fixedElements={["#header", "#side-bar-nav"]}
       render={({ state, fullpageApi }) => {
         console.log("render prop change", state) // eslint-disable-line no-console
         console.log(fullpageProps)
@@ -199,7 +199,7 @@ const SecondPage = fullpageProps => {
         return (
           <div id="fullpage-wrapper">
             <header
-              id="logo"
+              id="header"
               style={{
                 position: `fixed`,
                 top: `20px`,
@@ -211,7 +211,7 @@ const SecondPage = fullpageProps => {
                 marginLeft: `1rem`,
               }}
             >
-              <a href="#">
+              <a id="logo" href="#">
                 <img
                   src="https://res.cloudinary.com/nathandalton-dev/image/upload/dpr_auto,f_auto,q_auto:best/v1600824699/logo_cu0dx8.png"
                   alt="Global Wealth Partners Logo"
