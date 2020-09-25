@@ -20,59 +20,152 @@ const SecondPage = fullpageProps => {
   //     }}
   //   />
   // }, [state])
-  const onLeave = (origin, destination, direction) => {
-    const section = destination.item
-    console.log(destination.item)
-    const mainHeading = section.querySelector("h2")
-    const title = section.querySelectorAll("p")
-    const tl2 = gsap.timeline({ delay: 2 })
-    const tl1 = gsap.timeline({ delay: 1 })
-    tl2.fromTo(
-      title,
-      { y: 50, opacity: 0 },
-      { duration: 1.5, y: 0, opacity: 1 }
-    )
-    tl1.fromTo(mainHeading, { opacity: 0 }, { duration: 0.5, opacity: 1 })
 
-    if (destination.index === 0) {
-      const leftSection = section.querySelector("#left-section")
-      console.log(leftSection)
-      tl2.fromTo(
-        leftSection,
-        { width: 0, ease: "slow(0.3, 0.7, false)" },
-        { duration: 1.5, width: "35%", ease: "slow(0.3, 0.7, false)" }
-      )
-    }
-  }
-  const afterLoad = (origin, destination, direction) => {
-    const section = destination.item
-    console.log(destination.item)
+  const contentReveal = (section, destination) => {
     const mainHeading = section.querySelector("h2")
     const title = section.querySelectorAll("p")
     const hr = section.querySelectorAll("hr")
-    const tl2 = gsap.timeline({ delay: 3 })
-    const tl1 = gsap.timeline({ delay: 2 })
-    const tl = gsap.timeline({ delay: 0.5 })
-    tl2.fromTo(
-      title,
-      { y: 50, opacity: 0 },
-      { duration: 1.5, y: 0, opacity: 1 }
-    )
-    tl1.fromTo(mainHeading, { opacity: 0 }, { duration: 1.5, opacity: 1 })
-    tl1.fromTo(
-      hr,
-      { width: 0, ease: "slow(0.3, 0.7, false)" },
-      { duration: 1.5, width: "100%", ease: "slow(0.3, 0.7, false)" }
-    )
+    const leftSection = section.querySelector(".anim-section")
 
-    if (destination.index === 0) {
-      const leftSection = section.querySelector("#left-section")
-      console.log(leftSection)
+    if (destination.anchor === "thirdPage") {
+      const tl2 = gsap.timeline({ delay: 1.5 })
+      const tl = gsap.timeline({ delay: 0.5 })
+
+      tl2.fromTo(
+        title,
+        { y: 50, autoAlpha: 0 },
+        { duration: 1.5, y: 0, autoAlpha: 1 }
+      )
+      tl.fromTo(
+        mainHeading,
+        { autoAlpha: 0 },
+        { duration: 1.5, autoAlpha: 1 }
+      ).fromTo(
+        hr,
+        { width: 0, ease: "slow(0.3, 0.7, false)", autoAlpha: 0 },
+        {
+          duration: 1.5,
+          width: "100%",
+          ease: "slow(0.3, 0.7, false)",
+          autoAlpha: 1,
+        }
+      )
+    } else {
+      const tl3 = gsap.timeline({ delay: 2.5 })
+      const tl2 = gsap.timeline({ delay: 1.5 })
+      const tl = gsap.timeline({ delay: 0.5 })
+
+      tl3.fromTo(
+        title,
+        { y: 50, autoAlpha: 0 },
+        { duration: 1.5, y: 0, autoAlpha: 1 }
+      )
+      tl2
+        .fromTo(mainHeading, { autoAlpha: 0 }, { duration: 1.5, autoAlpha: 1 })
+        .fromTo(
+          hr,
+          { width: 0, ease: "slow(0.3, 0.7, false)", autoAlpha: 0 },
+          {
+            duration: 1.5,
+            width: "100%",
+            ease: "slow(0.3, 0.7, false)",
+            autoAlpha: 1,
+          }
+        )
+      if (destination.anchor === "firstPage") {
+        tl.fromTo(
+          leftSection,
+          { width: 0, ease: "slow(0.3, 0.7, false)" },
+          { duration: 1, width: "50%", ease: "slow(0.3, 0.7, false)" }
+        )
+      } else if (destination.anchor === "secondPage") {
+        console.log("second page")
+        tl.fromTo(
+          leftSection,
+          { width: 0, padding: 0, ease: "slow(0.3, 0.7, false)", autoAlpha: 0 },
+          {
+            duration: 1,
+            width: "100%",
+            padding: "2rem 0",
+            ease: "slow(0.3, 0.7, false)",
+            autoAlpha: 1,
+          }
+        )
+      }
+    }
+
+    // tl.restart().timeScale(1)
+    // tl2.restart().timeScale(1)
+    // tl3.restart().timeScale(1)
+  }
+
+  const contentHide = (section, origin) => {
+    const mainHeading = section.querySelector("h2")
+    const title = section.querySelectorAll("p")
+    const hr = section.querySelectorAll("hr")
+    const leftSection = section.querySelector(".anim-section")
+
+    const tl3 = gsap.timeline({ delay: 0.5 })
+    const tl2 = gsap.timeline({ delay: 0.5 })
+    const tl = gsap.timeline({ delay: 0.5 })
+
+    tl3.fromTo(title, { autoAlpha: 1 }, { duration: 1.5, autoAlpha: 0 })
+    tl2
+      .fromTo(mainHeading, { autoAlpha: 1 }, { duration: 1.5, autoAlpha: 0 })
+      .fromTo(
+        hr,
+        { autoAlpha: 1 },
+        {
+          duration: 1.5,
+          autoAlpha: 0,
+        }
+      )
+    if (origin.anchor === "firstPage") {
       tl.fromTo(
         leftSection,
-        { width: 0, ease: "slow(0.3, 0.7, false)" },
-        { duration: 1.5, width: "50%", ease: "slow(0.3, 0.7, false)" }
+        { width: "50%", ease: "slow(0.3, 0.7, false)" },
+        { duration: 1.5, width: 0, ease: "slow(0.3, 0.7, false)" }
       )
+    } else if (origin.anchor === "secondPage") {
+      tl.fromTo(
+        leftSection,
+        { width: "100%", padding: "2rem 0", ease: "slow(0.3, 0.7, false)" },
+        { duration: 1.5, width: 0, padding: 0, ease: "slow(0.3, 0.7, false)" }
+      )
+    }
+
+    // tl.reverse().timeScale(1)
+    // tl2.reverse().timeScale(1)
+    // tl3.reverse().timeScale(1)
+  }
+
+  const afterLoad = (origin, destination, direction) => {
+    var loadedSection = this
+
+    const section = destination.item
+    console.log(destination.item, destination.index)
+
+    if (destination.index === 0) {
+      contentReveal(section, destination)
+    } else if (destination.index === 1) {
+      contentReveal(section, destination)
+    } else if (destination.index === 2) {
+      contentReveal(section, destination)
+    }
+  }
+
+  const onLeave = (origin, destination, direction) => {
+    var leavingSection = this
+
+    const section = origin.item
+    console.log(section, origin)
+
+    if (destination.index != 0) {
+      contentHide(section, origin)
+    } else if (destination.index != 1) {
+      contentHide(section, origin)
+    } else if (destination.index != 2) {
+      contentHide(section, origin)
     }
   }
 
@@ -85,7 +178,7 @@ const SecondPage = fullpageProps => {
       parallax={true}
       parallaxOptions={{ percentage: 100 }}
       parallaxKey={"9CA6BD29-008B42B4-8AEA4CDF-FBC960E5"}
-      // onLeave={onLeave}
+      onLeave={onLeave}
       afterLoad={afterLoad}
       scrollingSpeed={2000}
       easing={"easeInOutBounce"}
@@ -151,10 +244,10 @@ const SecondPage = fullpageProps => {
               data-anchor="firstPage"
             >
               <aside
-                id="left-section"
+                className="anim-section"
                 style={{
                   position: `absolute`,
-                  width: `50%`,
+                  width: `0%`,
                   height: `100%`,
                   top: `0`,
                   left: `0`,
@@ -220,6 +313,31 @@ const SecondPage = fullpageProps => {
                 }}
               ></div>
               <div
+                className="layer text-container-2 anim-section"
+                style={{
+                  display: `flex`,
+                  justifyContent: `center`,
+                  alignItems: `center`,
+                  flexDirection: `column`,
+                  margin: `0 auto`,
+                  zIndex: `12`,
+                }}
+              >
+                {/* style={{ textAlign: `center`, color: `rgb(230,230,230)`, backgroundColor: `rgba(255,255,255, .8)`, padding: `1rem`, boxShadow: `7px 29px 49px 0px rgba(0, 0, 0, 0.5)`}} */}
+                <div>
+                  <hr />
+                  <p className="subheading">Customized and Unbiased Advice</p>
+                  <h2 className="hero-heading">
+                    Deep
+                    {/* <span></span> */}
+                    <br />
+                    Insight
+                  </h2>
+                  <p className="subheading">Into The Investment Markets</p>
+                  <hr />
+                </div>
+              </div>
+              {/* <div
                 className="layer"
                 style={{
                   display: `flex`,
@@ -238,18 +356,45 @@ const SecondPage = fullpageProps => {
                     </span>
                   </h2>
                 </div>
-              </div>
+              </div> */}
             </div>
             <div className="section" id="section3" data-anchor="thirdPage">
               <div
                 className="fp-bg"
                 style={{
-                  backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 1)),url(https://res.cloudinary.com/nathandalton-dev/image/upload/c_scale,f_auto,q_auto:best,w_2407/v1600851248/pexels-bongkarn-thanyakij-3740400_ky9fkq.jpg)`,
+                  backgroundImage: `linear-gradient(to bottom, rgba(27,27,27,.45), rgba(27,27,27,.45)),url(https://res.cloudinary.com/nathandalton-dev/image/upload/c_scale,f_auto,q_auto:best,w_2407/v1600851248/pexels-bongkarn-thanyakij-3740400_ky9fkq.jpg)`,
                   backgroundSize: `cover`,
                   backgroundPosition: `40% center`,
                 }}
               ></div>
               <div
+                className="layer"
+                style={{
+                  display: `flex`,
+                  justifyContent: `center`,
+                  alignItems: `center`,
+                  flexDirection: `column`,
+                  margin: `0 auto`,
+                  zIndex: `12`,
+                }}
+              >
+                <div>
+                  <hr />
+                  <p className="subheading">
+                    Highest Level of Integrity and Service
+                  </p>
+                  <h2 className="hero-heading">
+                    <span>Let Us Help</span>
+                    <br />
+                    You
+                    <br />
+                    <span>Find The Right Path</span>
+                  </h2>
+                  <p className="subheading">To Creating and Managing Wealth</p>
+                  <hr />
+                </div>
+              </div>
+              {/* <div
                 style={{
                   display: `flex`,
                   justifyContent: `center`,
@@ -267,7 +412,7 @@ const SecondPage = fullpageProps => {
                     </span>
                   </h2>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         )
