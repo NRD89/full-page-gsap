@@ -1,0 +1,36 @@
+html {
+  overflow: hidden;
+}
+
+#fullPageVid {
+  width: 100vw; 
+  height: 100vh;
+  object-fit: cover; 
+  object-position: center;
+  z-index: -1;
+  /* position: absolute; */
+}
+
+.time {
+  color: white;
+  height: 100px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cityTitles {
+  font-size: 3rem;
+  margin: 0 auto;
+  font-family: "Proza Libre", sans-serif;
+  text-transform: uppercase;
+  color: #ffffffc0
+}
+
+.centered-text {
+  position: relative;
+  z-index: 99;
+  width: 100%;
+  height: 100%;
+}
