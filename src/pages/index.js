@@ -1,9 +1,8 @@
 import React, { useEffect, useRef, useState } from "react"
 // import Div100vh from "react-div-100vh"
-import { gsap } from "gsap"
 import CityTitles from "../components/CityTitles"
 import SideBarNav from "../components/SideBarNav"
-import "../components/fullPage.css"
+import "../components/fullpage.css"
 
 const FullPageVid = () => {
   const vidRef = useRef(null)
