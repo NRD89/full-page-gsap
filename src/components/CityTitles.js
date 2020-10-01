@@ -10,144 +10,124 @@ const CityTitles = ({ currentTime }) => {
 
   // const variant = isPresent ? { opacity: 1 } : { opacity: 0 }
 
-  const sv = () => {
-    if ((currentTime >= 10) & (currentTime <= 14)) {
-      return true
-    } else {
-      return false
-    }
+  const variants = {
+    visible: { opacity: 1, transition: { ease: "easeIn", duration: 1 } },
+    hidden: { opacity: 0, transition: { ease: "easeOut", duration: 1 } },
   }
-
-  console.log(sv());
 
   return (
     <AnimatePresence exitBeforeEnter>
-      {(currentTime >= 10) & (currentTime <= 13.7) && (
+      {(currentTime >= 0) & (currentTime <= 8.5) && (
         <motion.div
-          className="cityTitles time"
           key="silicon-valley"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{
-            ease: "easeInOut",
-            duration: .6,
-          }}
-          exit={{ opacity: 0 }}
+          initial="hidden"
+          animate="visible"
+          exit="hidden"
+          variants={variants}
         >
           {" "}
-          <p>Silicon Valley</p>
+          <h2 className="hero-heading">
+            Global <br /> <span>Wealth</span>
+            <br />
+            Partners
+          </h2>
+        </motion.div>
+      )}
+      {(currentTime >= 10) & (currentTime <= 13.7) && (
+        <motion.div
+          key="silicon-valley"
+          initial="hidden"
+          animate="visible"
+          exit="hidden"
+          variants={variants}
+        >
+          {" "}
+          <h2 className="hero-heading">Silicon Valley</h2>
         </motion.div>
       )}
       {(currentTime >= 15) & (currentTime <= 18.7) && (
         <motion.div
-          className="cityTitles time"
           key="silicon-valley"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{
-            ease: "easeInOut",
-            duration: .6,
-          }}
-          exit={{ opacity: 0 }}
+          initial="hidden"
+          animate="visible"
+          exit="hidden"
+          variants={variants}
         >
           {" "}
-          <p>Beverly Hills</p>
+          <h2 className="hero-heading">Beverly Hills</h2>
         </motion.div>
       )}
       {(currentTime >= 20) & (currentTime <= 23.7) && (
         <motion.div
-          className="cityTitles time"
           key="silicon-valley"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{
-            ease: "easeInOut",
-            duration: .6,
-          }}
-          exit={{ opacity: 0 }}
+          initial="hidden"
+          animate="visible"
+          exit="hidden"
+          variants={variants}
         >
           {" "}
-          <p>Miami</p>
+          <h2 className="hero-heading">Miami</h2>
         </motion.div>
       )}
       {(currentTime >= 24.7) & (currentTime <= 28.7) && (
         <motion.div
-          className="cityTitles time"
           key="silicon-valley"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{
-            ease: "easeInOut",
-            duration: .6,
-          }}
-          exit={{ opacity: 0 }}
+          initial="hidden"
+          animate="visible"
+          exit="hidden"
+          variants={variants}
         >
           {" "}
-          <p>New York City</p>
+          <h2 className="hero-heading">New York City</h2>
         </motion.div>
       )}
       {(currentTime >= 29.7) & (currentTime <= 33.7) && (
         <motion.div
-          className="cityTitles time"
           key="silicon-valley"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{
-            ease: "easeInOut",
-            duration: .6,
-          }}
-          exit={{ opacity: 0 }}
+          initial="hidden"
+          animate="visible"
+          exit="hidden"
+          variants={variants}
         >
           {" "}
-          <p>London</p>
+          <h2 className="hero-heading">London</h2>
         </motion.div>
       )}
       {(currentTime >= 34.7) & (currentTime <= 38.7) && (
         <motion.div
-          className="cityTitles time"
           key="silicon-valley"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{
-            ease: "easeInOut",
-            duration: .6,
-          }}
-          exit={{ opacity: 0 }}
+          initial="hidden"
+          animate="visible"
+          exit="hidden"
+          variants={variants}
         >
           {" "}
-          <p>Amsterdam</p>
+          <h2 className="hero-heading">Amsterdam</h2>
         </motion.div>
       )}
       {(currentTime >= 39.7) & (currentTime <= 43.7) && (
         <motion.div
-          className="cityTitles time"
           key="silicon-valley"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{
-            ease: "easeInOut",
-            duration: .6,
-          }}
-          exit={{ opacity: 0 }}
+          initial="hidden"
+          animate="visible"
+          transition="transition"
+          exit="hidden"
+          variants={variants}
         >
           {" "}
-          <p>UAE</p>
+          <h2 className="hero-heading">UAE</h2>
         </motion.div>
       )}
       {(currentTime >= 44.7) & (currentTime <= 47.7) && (
         <motion.div
-          className="cityTitles time"
           key="silicon-valley"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{
-            ease: "easeInOut",
-            duration: .6,
-          }}
-          exit={{ opacity: 0 }}
+          initial="hidden"
+          animate="visible"
+          exit="hidden"
+          variants={variants}
         >
           {" "}
-          <p>Hong Kong</p>
+          <h2 className="hero-heading">Hong Kong</h2>
         </motion.div>
       )}
     </AnimatePresence>

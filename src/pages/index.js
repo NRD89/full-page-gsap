@@ -16,26 +16,6 @@ const FullPageVid = () => {
     setCurrentTime(vidRef.current.currentTime)
   }
 
-  // if (currentTime === 10) {
-
-  //   setTimeout(() => {
-  //     setSilicon(true)
-  //   }, 2500)
-  // }
-
-  // setTimeout(() => {
-  //   setSilicon(false)
-  // }, 5500)
-
-  // useEffect(() => {
-  //   if (currentTime >= 10 && currentTime <= 14 ) {
-  //     // setSilicon(true)
-  //     setTimeout(() => {
-  //       setSilicon(true)
-  //     }, 2500)
-  //   }
-  // }, [currentTime])
-
   return (
     <div>
       <div
@@ -47,15 +27,12 @@ const FullPageVid = () => {
           backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,.6),rgba(0,0,0,.0))`,
           display: `flex`,
           flexDirection: `column`,
-          justifyContent: `space-between`
+          justifyContent: `space-between`,
         }}
       >
         <header
           id="header"
           style={{
-            // position: `fixed`,
-            top: `20px`,
-            // left: `20px`,
             width: `100%`,
             zIndex: `99`,
             display: `flex`,
@@ -96,21 +73,20 @@ const FullPageVid = () => {
             // backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,.4), rgba(0,0,0,.4))`,
           }}
         >
-          {/* style={{ textAlign: `center`, color: `rgb(230,230,230)`, backgroundColor: `rgba(255,255,255, .8)`, padding: `1rem`, boxShadow: `7px 29px 49px 0px rgba(0, 0, 0, 0.5)`}} */}
           <div className="text-container">
             <hr />
             <p className="subheading">Over 100 years of combined experience</p>
-            <h2 className="hero-heading">
-              Global <br /> <span>Wealth</span>
-              <br />
-              Partners
-            </h2>
+            <div
+              className="cityTitles"
+            >
+              <CityTitles currentTime={currentTime} />
+            </div>
             <p className="subheading">Wealth Planning Firm</p>
             <hr />
           </div>
         </div>
         <div className="time">
-          <CityTitles currentTime={currentTime} />
+          {/* <CityTitles currentTime={currentTime} /> */}
         </div>
       </div>
 
