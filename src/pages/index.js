@@ -24,7 +24,7 @@ const FullPageVid = () => {
           zIndex: `1`,
           width: `100%`,
           height: `100%`,
-          backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,.6),rgba(0,0,0,.0))`,
+          backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,.5),rgba(0,0,0,.0))`,
           display: `flex`,
           flexDirection: `column`,
           justifyContent: `space-between`,
@@ -93,7 +93,7 @@ const FullPageVid = () => {
       <video
         ref={vidRef}
         id="fullPageVid"
-        src="https://res.cloudinary.com/nathandalton-dev/video/upload/v1601421578/GWP-smooth_a2m7sh.mp4"
+        src="https://res.cloudinary.com/nathandalton-dev/video/upload/v1601611197/Global-Wealth-Partners_gyvplm.mp4"
         autoPlay
         muted
         loop
