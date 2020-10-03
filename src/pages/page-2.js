@@ -1,7 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
 import ReactFullpage from "@fullpage/react-fullpage"
-import { Parallax } from "react-parallax"
 import YachtPic from "../images/pexels-oliver-sjöström-1223649.jpg"
 
 import Layout from "../components/layout"
