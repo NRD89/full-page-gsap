@@ -29,23 +29,24 @@ module.exports = {
     },
     `gatsby-plugin-scroll-reveal`,
     {
-      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      resolve: 'gatsby-plugin-web-font-loader',
       options: {
-        fonts: [
-          {
-            family: `Proza Libre`,
-          },
-          {
-            family: `Cormorant Garamond`,
-            variants: ['300', `700`]
-          },
-          {
-            family: `Open Sans`,
-            variants: ['300', `700`]
-          },
-        ],
+        google: {
+          families: ['Proza Libre', 'Cormorant Garamond', `Dosis`]
+        }
+      }
+    },
+    {
+      resolve: "gatsby-source-graphql",
+      options: {
+        // Remote schema query type. This is an arbitrary name.
+        typeName: "WPGraphQL",
+        // Field name under which it will be available. Used in your Gatsby query. This is also an arbitrary name.
+        fieldName: "wpcontent",
+        // GraphQL endpoint, relative to your WordPress home URL.
+        url: "http://rugmall.com/graphql",
       },
-    }
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

@@ -127,7 +127,7 @@ const CityTitles = ({ currentTime }) => {
           variants={variants}
         >
           {" "}
-          <h2 className="hero-heading">United Arab <br /> Emirates</h2>
+          <h2 className="hero-heading">Dubai</h2>
         </motion.div>
       )}
       {(currentTime >= 43.3) & (currentTime <= 46.7) && (

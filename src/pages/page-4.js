@@ -17,6 +17,7 @@ const isBrowser = typeof window !== `undefined`
 const GsapPage = () => {
   const size = useWindowSize()
   // let pageRef = useRef()
+  console.log(size);
 
   useEffect(() => {
     if (!isBrowser) return false

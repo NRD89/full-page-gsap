@@ -9,7 +9,7 @@ const useWindowSize = () => {
   //   }
   // }
 
-  const [height, setHeight] = useState(isBrowser ? window.innerHeight: 0)
+  const [height, setHeight] = useState(undefined)
 
   useEffect(() => {
     if (!isBrowser) return false
@@ -18,6 +18,8 @@ const useWindowSize = () => {
     }
 
     window.addEventListener("resize", handleResize)
+
+    handleResize()
 
     return () => {
       window.removeEventListener("resize", handleResize)

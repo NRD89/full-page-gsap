@@ -2,13 +2,16 @@ import React, { useEffect, useRef, useState } from "react"
 // import Div100vh from "react-div-100vh"
 import CityTitles from "../components/CityTitles"
 import SideBarNav from "../components/SideBarNav"
+import FullPageNav from "../components/FullPageNav"
 import "../components/fullpage.css"
+import vid from "../assets/Global-Wealth-Partners.mp4"
 
-const FullPageVid = () => {
+const FullPageVid = ({ data }) => {
   const vidRef = useRef(null)
   // const vidCurrentTime = useVidCurrentTime()
   const [currentTime, setCurrentTime] = useState()
   const [menuState, setMenuState] = useState(false)
+  const wpMenuLinks = data.wpcontent.menuItems.nodes
   // const [silicon, setSilicon] = useState(false)
   // console.log(silicon);
 
@@ -47,7 +50,8 @@ const FullPageVid = () => {
               alt="Global Wealth Partners Logo"
             />
           </a>
-          <div>
+          <FullPageNav wpMenuLinks={wpMenuLinks} />
+          {/* <div>
             <button
               className={`menu-trigger ${menuState ? "menu-close" : ""}`}
               onClick={() => setMenuState(!menuState)}
@@ -57,7 +61,7 @@ const FullPageVid = () => {
               <span></span>
             </button>
           </div>
-          <SideBarNav menuState={menuState} setMenuState={setMenuState} />
+          <SideBarNav menuState={menuState} setMenuState={setMenuState} /> */}
         </header>
 
         <div
@@ -76,9 +80,7 @@ const FullPageVid = () => {
           <div className="text-container">
             <hr />
             <p className="subheading">Over 100 years of combined experience</p>
-            <div
-              className="cityTitles"
-            >
+            <div className="cityTitles">
               <CityTitles currentTime={currentTime} />
             </div>
             <p className="subheading">Wealth Planning Firm</p>
@@ -93,7 +95,7 @@ const FullPageVid = () => {
       <video
         ref={vidRef}
         id="fullPageVid"
-        src="https://res.cloudinary.com/nathandalton-dev/video/upload/v1601611197/Global-Wealth-Partners_gyvplm.mp4"
+        src={vid}
         autoPlay
         muted
         loop
@@ -104,3 +106,25 @@ const FullPageVid = () => {
 }
 
 export default FullPageVid
+
+export const query = graphql`
+  query WpMenuQuery {
+    wpcontent {
+      menuItems(where: { location: PRIMARYNAVIGATION }, first: 100) {
+        nodes {
+          id
+          label
+          url
+          childItems {
+            nodes {
+              label
+              url
+              parentId
+            }
+          }
+          parentId
+        }
+      }
+    }
+  }
+`
