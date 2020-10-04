@@ -4,7 +4,7 @@ import CityTitles from "../components/CityTitles"
 import SideBarNav from "../components/SideBarNav"
 import FullPageNav from "../components/FullPageNav"
 import "../components/fullpage.css"
-import vid from "../assets/Global-Wealth-Partners.mp4"
+import vid from "../assets/Global-Wealth-Partners-1080p.mp4"
 
 const FullPageVid = ({ data }) => {
   const vidRef = useRef(null)
@@ -18,6 +18,7 @@ const FullPageVid = ({ data }) => {
   const onTimeUpdate = () => {
     setCurrentTime(vidRef.current.currentTime)
   }
+  console.log(currentTime)
 
   return (
     <div>
