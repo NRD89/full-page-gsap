@@ -94,8 +94,11 @@ const FullPageVid = ({ data }) => {
       </div>
 
       <video
+        width="1920"
+        height="1080"
         ref={vidRef}
         id="fullPageVid"
+        preload="auto"
         src={vid}
         autoPlay
         muted
