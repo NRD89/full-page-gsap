@@ -5,19 +5,27 @@ import SideBarNav from "../components/SideBarNav"
 import FullPageNav from "../components/FullPageNav"
 import "../components/fullpage.css"
 import vid from "../assets/Global-Wealth-Partners-1080p.mp4"
+// import Vimeo from "@u-wave/react-vimeo"
+import ReactPlayer from "react-player/youtube"
 
 const FullPageVid = ({ data }) => {
   const vidRef = useRef(null)
   // const vidCurrentTime = useVidCurrentTime()
   const [currentTime, setCurrentTime] = useState()
+  const [player, setPlayer] = useState()
   const [menuState, setMenuState] = useState(false)
   const wpMenuLinks = data.wpcontent.menuItems.nodes
   // const [silicon, setSilicon] = useState(false)
   // console.log(silicon);
 
-  const onTimeUpdate = () => {
-    setCurrentTime(vidRef.current.currentTime)
+  const handleReady = () => {
+    setPlayer(vidRef.current.getCurrentTime())
   }
+
+  const onTimeUpdate = ({ playedSeconds }) => {
+    setCurrentTime(playedSeconds)
+  }
+
   console.log(currentTime)
 
   return (
@@ -82,7 +90,7 @@ const FullPageVid = ({ data }) => {
             <hr />
             <p className="subheading">Over 100 years of combined experience</p>
             <div className="cityTitles">
-              <CityTitles currentTime={currentTime} />
+              <CityTitles currentTime={currentTime} player={player} />
             </div>
             <p className="subheading">Wealth Planning Firm</p>
             <hr />
@@ -93,18 +101,51 @@ const FullPageVid = ({ data }) => {
         </div>
       </div>
 
-      <video
+      {/* <Vimeo
+        className="vimeo-wrapper"
+        video="465166232"
+        autoplay
+        controls={false}
+        onReady={handleReady}
+        ref={vidRef}
+        onTimeUpdate={onTimeUpdate}
+      /> */}
+
+      <div className="video-background">
+        <div className="video-foreground">
+          <ReactPlayer
+            url="https://www.youtube.com/watch?v=2q8IJFP20mQ"
+            ref={vidRef}
+            playing
+            muted
+            controls={false}
+            onReady={handleReady}
+            onProgress={onTimeUpdate}
+            loop={true}
+            config={{
+              file: {
+                attributes: {
+                  autoPlay: true,
+                  muted: true,
+                },
+              },
+            }}
+          />
+        </div>
+      </div>
+
+      {/* <video
         width="1920"
         height="1080"
         ref={vidRef}
         id="fullPageVid"
         preload="auto"
-        src={vid}
+        src="https://youtu.be/2q8IJFP20mQ"
         autoPlay
         muted
         loop
         onTimeUpdate={onTimeUpdate}
-      ></video>
+      ></video> */}
     </div>
   )
 }
