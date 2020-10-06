@@ -36,7 +36,7 @@ const FullPageVid = ({ data }) => {
           zIndex: `1`,
           width: `100%`,
           height: `100%`,
-          backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,.5),rgba(0,0,0,.0))`,
+          backgroundImage: `linear-gradient(to bottom, rgba(27,27,27,.55),rgba(27,27,27,.55))`,
           display: `flex`,
           flexDirection: `column`,
           justifyContent: `space-between`,
@@ -114,7 +114,7 @@ const FullPageVid = ({ data }) => {
       <div className="video-background">
         <div className="video-foreground">
           <ReactPlayer
-            url="https://www.youtube.com/watch?v=2q8IJFP20mQ"
+            url="https://www.youtube.com/watch?v=_YLNSZJ0doQ"
             ref={vidRef}
             playing
             muted

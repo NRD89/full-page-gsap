@@ -19,7 +19,7 @@ const CityTitles = ({ currentTime }) => {
     <AnimatePresence exitBeforeEnter>
       {(currentTime >= 1) & (currentTime <= 4.3) && (
         <motion.div
-          key="silicon-valley"
+          key="gwp"
           initial="hidden"
           animate="visible"
           exit="hidden"
@@ -47,7 +47,7 @@ const CityTitles = ({ currentTime }) => {
       )}
       {(currentTime >= 10.3) & (currentTime <= 13.7) && (
         <motion.div
-          key="silicon-valley"
+          key="bh"
           initial="hidden"
           animate="visible"
           exit="hidden"
@@ -59,7 +59,7 @@ const CityTitles = ({ currentTime }) => {
       )}
       {(currentTime >= 15.3) & (currentTime <= 18.7) && (
         <motion.div
-          key="silicon-valley"
+          key="miami"
           initial="hidden"
           animate="visible"
           exit="hidden"
@@ -71,7 +71,19 @@ const CityTitles = ({ currentTime }) => {
       )}
       {(currentTime >= 19.7) & (currentTime <= 22.7) && (
         <motion.div
-          key="silicon-valley"
+          key="lv"
+          initial="hidden"
+          animate="visible"
+          exit="hidden"
+          variants={variants}
+        >
+          {" "}
+          <h2 className="hero-heading">Las Vegas</h2>
+        </motion.div>
+      )}
+      {(currentTime >= 24.3) & (currentTime <= 27.7) && (
+        <motion.div
+          key="sd"
           initial="hidden"
           animate="visible"
           exit="hidden"
@@ -81,9 +93,9 @@ const CityTitles = ({ currentTime }) => {
           <h2 className="hero-heading">San Diego</h2>
         </motion.div>
       )}
-      {(currentTime >= 24.3) & (currentTime <= 27.7) && (
+      {(currentTime >= 29) & (currentTime <= 32.7) && (
         <motion.div
-          key="silicon-valley"
+          key="ny"
           initial="hidden"
           animate="visible"
           exit="hidden"
@@ -91,18 +103,6 @@ const CityTitles = ({ currentTime }) => {
         >
           {" "}
           <h2 className="hero-heading">New York City</h2>
-        </motion.div>
-      )}
-      {(currentTime >= 29) & (currentTime <= 32.7) && (
-        <motion.div
-          key="silicon-valley"
-          initial="hidden"
-          animate="visible"
-          exit="hidden"
-          variants={variants}
-        >
-          {" "}
-          <h2 className="hero-heading">London</h2>
         </motion.div>
       )}
       {(currentTime >= 34) & (currentTime <= 37) && (
@@ -114,7 +114,7 @@ const CityTitles = ({ currentTime }) => {
           variants={variants}
         >
           {" "}
-          <h2 className="hero-heading">Amsterdam</h2>
+          <h2 className="hero-heading">London</h2>
         </motion.div>
       )}
       {(currentTime >= 38.3) & (currentTime <= 41.7) && (
@@ -127,10 +127,22 @@ const CityTitles = ({ currentTime }) => {
           variants={variants}
         >
           {" "}
-          <h2 className="hero-heading">Dubai</h2>
+          <h2 className="hero-heading">Amsterdam</h2>
         </motion.div>
       )}
       {(currentTime >= 43.3) & (currentTime <= 46.7) && (
+        <motion.div
+          key="silicon-valley"
+          initial="hidden"
+          animate="visible"
+          exit="hidden"
+          variants={variants}
+        >
+          {" "}
+          <h2 className="hero-heading">Dubai</h2>
+        </motion.div>
+      )}
+      {(currentTime >= 48) & (currentTime <= 51) && (
         <motion.div
           key="silicon-valley"
           initial="hidden"
